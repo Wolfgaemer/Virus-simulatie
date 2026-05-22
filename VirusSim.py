@@ -238,8 +238,6 @@ vaccinatieTekst = play.new_text(
 )
 
 
-
-
 #verbergen op start
 ziekenhuis.hide()
 ziekenhuisTekst.hide()
@@ -325,8 +323,7 @@ async def check_start():
             ziekenhuis_knop_tekst.hide()
             vaccinatie_knop.hide()
             vaccinatie_knop_tekst.hide()
-            # toon ziekenhuis en vaccinatie
-            # toon ziekenhuis alleen als aan
+            
             if ziekenhuis_aan:
                 ziekenhuis.show()
                 ziekenhuisTekst.show()
@@ -344,7 +341,7 @@ async def check_start():
             for count in range(gekozen_aantal - 1):
                 personen.append(Persoon('Healthy','green'))
 
-            # 1 besmet persoon
+            # besmet persoon
             for count in range(1):
                 personen.append(Persoon('Viral','red'))
 
@@ -389,7 +386,7 @@ async def viruscheck():
                 persoon1.setKleur()
                 persoon1.status = "Dead"
 
-                # persoon stopt met bewegen
+                # stoppen bewegen
                 persoon1.object.physics.x_speed = 0
                 persoon1.object.physics.y_speed = 0
                 persoon1.object.physics.can_move = False
@@ -451,7 +448,6 @@ async def viruscheck():
             geenBesmettePersonen = False
 
 
-
     if (iedereenBesmet or geenBesmettePersonen) and len(personen) > 0:
         eindtijd = round(time.time() - begintijd)
         tijdInBeeld.words = eindtijd
@@ -475,7 +471,6 @@ async def viruscheck():
 
             elif persoon.status == "Resistant":
                 aantal_gevaccineerd += 1
-
 
         f = open("simulatie.txt", "a")
 
